@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bill Bailey</title>
+    <meta name="viewport" content="minimum-scale=1,maximum-scale=1,width=device-width">
+    <link rel="stylesheet" href="bailey.css">
+</head>
+<body>
+    <canvas id="sqCanvas" width="1024" height="768"></canvas>
+    <div id="sqSpinner"><div></div></div>
+    <div id="sqMessage">
+        <h1>Preparing Bill Bailey...</h1>
+    </div>
+    <script type="module" src="squeak.min.js"></script>
+    <script>
+        // Unlike the bailey.js script, we're not using the base64-encoded image
+        // here, but load bailey.zip directly
+        window.onload = setTimeout(() => {
+            sqMessage.style.display = "none";
+            SqueakJS.runSqueak("bailey.zip", sqCanvas, {
+                appName: "Bill Bailey",
+                fixedWidth: 1024,
+                fixedHeight: 768,
+                spinner: sqSpinner,
+            });
+        }, 3000); // Delay to show the message for a bit
+    </script>
+</body>
+</html>
